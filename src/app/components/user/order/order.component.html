@@ -1,0 +1,75 @@
+
+<nav class="navbar fixed-top cl-grey-navbar">
+  <div class="container-fluid">
+    <div>
+      <a routerLink="/user/{{userId}}/orderhistory" class="navbar-brand cl-text-black cl-icon-padding">
+        <i class="fas fa-angle-left"></i>
+      </a>
+      <h1 class="navbar-brand cl-text-black cl-text-bold cl-text-grey">
+        Order details
+      </h1>
+    </div>
+  </div>
+</nav>
+
+<div class="container website-new-content">
+  <div class="card order-card">
+    <div class="card-header">
+      <strong>{{status}}</strong>
+    </div>
+      <h5 class="card-title">{{order.userAddress}}</h5>
+      <div><strong>User: </strong> {{order.user}}</div>
+      <div><strong>User Address: </strong> {{order.userAddress}}</div>
+      <div><strong>User Phone Number: </strong> {{order.phone}}</div>
+      <!--<div><strong>Time</strong> {{order.time}}</div>-->
+      <div><strong>Status:</strong> {{status}}</div>
+      <br>
+      <div><strong>Details:</strong></div>
+      <table class="table table-responsive table-bordered ">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <!--<th scope="col">Date</th>-->
+          <th scope="col">Dish</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let dish of order.dishes; index as i">
+        <tr>
+          <th scope="row">{{i + 1}}</th>
+          <!--<td>{{order.time}}</td>-->
+          <td>{{dish.dish}}</td>
+          <td>{{dish.price}}</td>
+          <td>{{dish.quantity}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div><strong>Total: $</strong>{{order.total}}</div>
+    <div class="float-right" *ngIf="order.status !== 5 && order.status !== 4">
+      <button (click)="cancelOrder(order)" class="btn btn-danger btn-sm">Cancel Order</button>
+    </div>
+      <br>
+    </div>
+  <div class="card-body">
+  </div>
+
+  <nav class="navbar fixed-bottom cl-grey-navbar">
+    <ul class="nav nav-tabs" id = "menu">
+      <li class = "nav-item">    <a routerLink="/menu" class="navbar-brand cl-text-black cl-icon-padding">
+        <span class="fas fa-home"></span>
+      </a></li>
+      <li class = "nav-item">    <a routerLink="/user/{{userId}}/orderhistory" class="navbar-brand cl-text-black cl-icon-padding pull-left">
+        <span class="fas fa-history"></span>
+      </a></li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a routerLink="/user/{{userId}}/profile" class="navbar-brand cl-text-black cl-icon-padding float-right">
+        <span class="fas fa-user"></span>
+      </a>
+    </form>
+
+  </nav>
+</div>
+
+
