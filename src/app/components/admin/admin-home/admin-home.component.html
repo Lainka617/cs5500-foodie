@@ -1,0 +1,37 @@
+<nav class="navbar fixed-top cl-grey-navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1 class="cl-text-black navbar-brand cl-text-bold">
+        Admin Home Page
+      </h1>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <button class="btn btn-primary btn-block"
+          routerLink="/admin/adduser">Add User
+  </button>
+  <button class="btn btn-primary btn-block"
+          routerLink="/admin/edituser">Edit User
+  </button>
+
+  <p></p>
+  <br/>
+
+  <button class="btn btn-primary btn-block"
+          routerLink="/restaurant/currentorders">Current Orders
+  </button>
+  <button class="btn btn-primary btn-block"
+          routerLink="/restaurant/orderhistory">Order History
+  </button>
+  <br/>
+  <br/>
+  <button class="btn btn-danger  btn-block"
+          (click)="logout()" routerLinkActive="active">Logout
+  </button>
+  <button class="btn btn-danger  btn-block"
+          (click)="deleteUser()" routerLinkActive="active">Delete
+  </button>
+</div>
