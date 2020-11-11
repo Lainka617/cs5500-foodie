@@ -9,16 +9,17 @@ module.exports = function (app) {
     const orderModel = require('../model/order/order.model.server');
     const bcrypt = require('bcrypt-nodejs');
 
-    app.post("/api/user", createUser);
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
+    app.get("/api/logout", logout);// 不用post
+    app.get("/api/allusers/:userType", findAllUsersByType);
+    app.post("/api/user", createUser);// admin
+    app.post("/api/register", register);
+    app.post("/api/login", passport.authenticate('local'), login);
+    app.post("/api/isLoggedIn", isLoggedIn);// user一段时间后会到页面需要check
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
-    app.post("/api/login", passport.authenticate('local'), login);
-    app.post("/api/logout", logout);
-    app.post("/api/register", register);
-    app.post("/api/loggedin", loggedin);
-    app.get("/api/allusers/:userType", findAllUsersByType);
+    
 
 
     function serializeUser(user, done) {
@@ -74,7 +75,7 @@ module.exports = function (app) {
         res.send({});
     }
 
-    function loggedin(req, res) {
+    function isLoggedIn(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 

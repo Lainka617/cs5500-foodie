@@ -58,7 +58,7 @@ export class UserService {
     logout() {
         this.options.withCredentials = true;
         return this._http
-            .post(this.baseUrl + '/api/logout', '', this.options);
+            .get(this.baseUrl + '/api/logout');
     }
 
     register(username: String, password: String, userType: String) {
@@ -68,9 +68,9 @@ export class UserService {
             .post(this.baseUrl + '/api/register', user, this.options);
     }
 
-    loggedIn() {
+    isLoggedIn() {
         return this._http
-            .post(this.baseUrl + '/api/loggedin', '', this.options)
+            .post(this.baseUrl + '/api/isLoggedIn', '', this.options)
             .pipe(
                 map((user) => {
                         if (user !== 0) {
