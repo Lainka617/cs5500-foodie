@@ -134,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "web5610"
+  "defaultProject": "web5610",
+  "cli": {
+    "analytics": "3aaa453d-589c-4be6-8be0-46dd7d4b974a"
+  }
 }
