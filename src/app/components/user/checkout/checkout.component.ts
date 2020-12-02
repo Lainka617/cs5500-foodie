@@ -28,7 +28,11 @@ export class CheckoutComponent implements OnInit {
   numErrorMsg = 'Invalid number!';
   dishes: any[];
   phone: String;
-  address: String;
+  address1: String;
+  address2: String;
+  city: String;
+  state: String;
+  zip: String;
   errorFlag: boolean
   errorMsg = "Address or phone can't be null!";
   total: Number;
@@ -41,14 +45,22 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.address = '';
+    this.address1 = '';
+    this.address2 = '';
+    this.city = '';
+    this.state = '';
+    this.zip = '';
     this.phone = '';
     this.activatedRoute.params.subscribe(params => {
       this.userId = params['uid'];
       this.userService.findUserById(this.userId).subscribe(
           (user: User) => {
             this.user = user;
-            this.address = user.address;
+            this.address1 = user.address1;
+            this.address2 = user.address2;
+            this.city = user.city;
+            this.state = user.state;
+            this.zip = user.zip;
             this.phone = user.phone;
           }
       );
@@ -76,7 +88,11 @@ export class CheckoutComponent implements OnInit {
 
 
   updateOrder() {
-    this.order.userAddress = this.address;
+    this.order.address1 = this.address1;
+    this.order.address2 = this.address2;
+    this.order.city = this.city;
+    this.order.state = this.state;
+    this.order.zip = this.zip;
     this.order.phone = this.phone;
     this.order.total = Number(0);
     for (let i = 0; i < this.order.dishes.length; i++) {
@@ -106,11 +122,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   submit() {
-    this.order.userAddress = this.address;
+    this.order.address1 = this.address1;
+    this.order.address2 = this.address2;
+    this.order.city = this.city;
+    this.order.state = this.state;
+    this.order.zip = this.zip;
     this.order.phone = this.phone;
     this.order.total = this.total;
-    console.log(this.address);
-    if (this.address === '' || this.phone === '') {
+    console.log(this.address1);
+    if (this.address1 === '' || this.phone === '') {
       this.errorFlag = true;
       return;
     }
