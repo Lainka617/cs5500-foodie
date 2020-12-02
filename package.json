@@ -1,5 +1,5 @@
 {
-  "name": "web5610",
+  "name": "cs5500",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -36,6 +36,7 @@
     "bootstrap": "^4.2.1",
     "cookie-parser": "^1.4.4",
     "core-js": "^2.6.5",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "hammerjs": "^2.0.8",
@@ -49,6 +50,7 @@
     "quill": "^1.3.6",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.3.3",
+    "save": "^2.4.0",
     "tslib": "^1.9.0",
     "typescript": "~3.2.2",
     "zone.js": "~0.8.26"

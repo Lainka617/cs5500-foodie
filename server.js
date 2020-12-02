@@ -14,10 +14,10 @@ app.use(session({ secret: 'S3CR#T!' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-var connectionString = 'mongodb://localhost:27017/restaurant';
+var connectionString = 'mongodb://localhost:27017/cs5500';
 var mongoose = require("mongoose");
 
-mongoose.createConnection(connectionString);
+mongoose.createConnection(connectionString, {useNewUrlParser: true});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,10 +50,10 @@ const server = http.createServer(app);
 require("./server/app")(app);
 
 // Point static path to dist -- For building -- REMOVE
-app.use(express.static(path.join(__dirname, 'dist/web5610')));
+app.use(express.static(path.join(__dirname, 'dist/cs5500')));
 app.use(express.static(path.join(__dirname, 'public/')));
 app.get('/**', function (req, res) {
-  res.sendFile(__dirname + '/dist/web5610/index.html');
+  res.sendFile(__dirname + '/dist/cs5500/index.html');
 });
 
 
