@@ -5,10 +5,14 @@ var restaurantSchema = mongoose.Schema(
     {
         name: String,
         email: String,
-        address: String,
+        address1: String,
+        address2: String,
+        city: String,
+        state: String,
+        zip: String,
         phone: String,
         description: String,
-        dateCreate: {
+        dateCreated: {
             type: Date,
             default: Date.now()
         },

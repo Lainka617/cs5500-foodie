@@ -9,7 +9,8 @@ var menuSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    position: Number
+    position: Number,
+    restaurantId: String
 }, { collection: 'menu' });
 
 module.exports = menuSchema;

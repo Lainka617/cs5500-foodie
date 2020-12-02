@@ -14,7 +14,7 @@ app.use(session({ secret: 'S3CR#T!' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-var connectionString = 'mongodb://localhost:27017/web5610';
+var connectionString = 'mongodb://localhost:27017/restaurant';
 var mongoose = require("mongoose");
 
 mongoose.createConnection(connectionString);
@@ -24,12 +24,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // CORS
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
+
+var cors = require('cors');    
+app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 
 const port=process.env.PORT || '3200';
 app.set('port', port);
