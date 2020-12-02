@@ -11,7 +11,11 @@ var orderSchema = new mongoose.Schema({
     userId: String,
     deliverId: String,
     status: Number,
-    userAddress: String,
+    address1: String,
+    address2: String,
+    city: String,
+    state: String,
+    zip: String,
     phone:String,
     time: {type: Date, default: Date.now()}
 }, {collection: 'order'});
