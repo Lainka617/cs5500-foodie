@@ -1,4 +1,5 @@
 var _ = require('lodash');
+const { Mongoose } = require('mongoose');
 
 module.exports = function (app) {
     //var randomstring = require("randomstring");
@@ -9,16 +10,20 @@ module.exports = function (app) {
     const orderModel = require('../model/order/order.model.server');
     const bcrypt = require('bcrypt-nodejs');
 
-    app.post("/api/user", createUser);
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
-    app.put("/api/user/:userId", updateUser);
-    app.delete("/api/user/:userId", deleteUser);
-    app.post("/api/login", passport.authenticate('local'), login);
-    app.post("/api/logout", logout);
-    app.post("/api/register", register);
-    app.post("/api/loggedin", loggedin);
+    app.get("/api/logout", logout);// 不用post
     app.get("/api/allusers/:userType", findAllUsersByType);
+    
+    app.post("/api/register", register);
+    app.post("/api/login", passport.authenticate('local'), login);
+    app.post("/api/isLoggedIn", isLoggedIn);// user一段时间后会到页面需要check 0没有
+    
+    app.put("/api/user/:userId", updateUser);
+    
+    app.delete("/api/user/:userId", deleteUser);
+    //app.post("/api/user", generateUser);// admin
+    
 
 
     function serializeUser(user, done) {
@@ -69,16 +74,19 @@ module.exports = function (app) {
     }
 
     function logout(req, res) {
+        console.log("logout");
+        Mongoose.name
         req.logOut();
         // res.send(200);
         res.send({});
     }
 
-    function loggedin(req, res) {
+    function isLoggedIn(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
     function register(req, res) {
+        console.log("register");
         const user = req.body;
         console.log(req.body);
         user.password = bcrypt.hashSync(user.password);
@@ -99,21 +107,21 @@ module.exports = function (app) {
             );
     }
 
-    function createUser(req, res) {
-        var user = _.pick(req.body, ['username', 'password','userType']);
-        userModel.createUser(user).then(
-            function (user) {
-                if (user) {
-                    res.json(user);
-                } else {
-                    res.status(400).send("Something went wrong");
-                }
-            },
-            function (err) {
-                res.status(400).send(err);
-            }
-        );
-    };
+    // function generateUser(req, res) {
+    //     var user = _.pick(req.body, ['username', 'password','userType']);
+    //     userModel.createUser(user).then(
+    //         function (user) {
+    //             if (user) {
+    //                 res.json(user);
+    //             } else {
+    //                 res.status(400).send("Something went wrong");
+    //             }
+    //         },
+    //         function (err) {
+    //             res.status(400).send(err);
+    //         }
+    //     );
+    // };
 
     function findAllUsersByType(req, res) {
         var type = req.params["userType"];
@@ -216,6 +224,7 @@ module.exports = function (app) {
 
     function updateUser(req, res) {
         var userId = req.params["userId"];
+        console.log(userId);
         var updatedUser = req.body;
         userModel.updateUser(userId, updatedUser).then(
             function (user) {

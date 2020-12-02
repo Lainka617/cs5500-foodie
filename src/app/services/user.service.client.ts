@@ -18,9 +18,9 @@ export class UserService {
         return this._http.get<User>(this.baseUrl + '/api/allusers/' + type);
     }
 
-    createUser(user: User) {
-        return this._http.post(this.baseUrl + '/api/user', user);
-    }
+    // createUser(user: User) {
+    //     return this._http.post(this.baseUrl + '/api/user', user);
+    // }
 
     findUserById(userId: String) {
         return this._http.get(this.baseUrl + '/api/user/' + userId);
@@ -58,19 +58,19 @@ export class UserService {
     logout() {
         this.options.withCredentials = true;
         return this._http
-            .post(this.baseUrl + '/api/logout', '', this.options);
+            .get(this.baseUrl + '/api/logout');
     }
 
     register(username: String, password: String, userType: String) {
         this.options.withCredentials = true;
         const user = {username: username, password: password, userType: userType};
         return this._http
-            .post(this.baseUrl + '/api/register', user, this.options);
+            .post(this.baseUrl + '/api/register', user);
     }
 
-    loggedIn() {
+    isLoggedIn() {
         return this._http
-            .post(this.baseUrl + '/api/loggedin', '', this.options)
+            .post(this.baseUrl + '/api/isLoggedIn', '', this.options)
             .pipe(
                 map((user) => {
                         if (user !== 0) {
