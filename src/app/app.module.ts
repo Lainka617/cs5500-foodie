@@ -22,13 +22,9 @@ import { RestaurantOrderHistoryComponent } from './components/restaurant/restaur
 import {MatRadioModule} from '@angular/material/radio';
 import {UserService} from './services/user.service.client';
 import {RestaurantService} from './services/restaurant.service.client';
-import {OrderService} from './services/order.service.client';
 import {SharedService} from './services/shared.service';
 import { CurrentOrderComponent } from './components/restaurant/current-order/current-order.component';
 import {AuthGuard} from './services/auth-guard.service';
-import { DetailComponent } from './components/deliver/detail/detail.component';
-import { DeliverHomeComponent } from './components/deliver/home/home.component';
-import { DeliverService } from './services/deliver.service.client';
 import { AgmDirectionModule} from 'agm-direction'; // agm-direction
 import { AgmCoreModule } from '@agm/core';
 import {MenuService} from './services/menu.service.client';
@@ -59,8 +55,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     RestaurantHomeComponent,
     MenuEditComponent,
     RestaurantOrderHistoryComponent,
-    DetailComponent,
-    DeliverHomeComponent,
     CurrentOrderComponent,
     SortableDirective,
     AdminHomeComponent,
@@ -81,7 +75,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBtrCeFbuL6cSgjC2UyJsaJuJoXKXAmQQM', libraries: ['geometry']})
   ],
-  providers: [UserService, RestaurantService, OrderService, SharedService, AuthGuard, DeliverService, MenuService],
+  providers: [UserService, RestaurantService, SharedService, AuthGuard, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
