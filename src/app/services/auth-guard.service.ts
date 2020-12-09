@@ -9,7 +9,8 @@ export class AuthGuard implements CanActivate {
     }
 
     canActivate() {
-        return this.userService.loggedIn();
+        return this.userService.isLoggedIn();
+
     }
 
     // make sure to import AuthGuard in app.routing.ts and app.module.ts.

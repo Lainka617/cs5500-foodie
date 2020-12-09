@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CS5500": {
+    "cs5500": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/CS5500",
+            "outputPath": "dist/cs5500",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "CS5500:build"
+            "browserTarget": "cs5500:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "CS5500:build:production"
+              "browserTarget": "cs5500:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CS5500:build"
+            "browserTarget": "cs5500:build"
           }
         },
         "test": {
@@ -105,7 +105,7 @@
         }
       }
     },
-    "CS5500-e2e": {
+    "cs5500-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -114,11 +114,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "CS5500:serve"
+            "devServerTarget": "cs5500:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "CS5500:serve:production"
+              "devServerTarget": "cs5500:serve:production"
             }
           }
         },
@@ -134,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "CS5500"
+  "defaultProject": "cs5500",
+  "cli": {
+    "analytics": "3aaa453d-589c-4be6-8be0-46dd7d4b974a"
+  }
 }
