@@ -7,6 +7,7 @@ Restaurant.findRestaurant = findRestaurant;
 Restaurant.updateRestaurant = updateRestaurant;
 Restaurant.findRestaurantByName=findRestaurantByName;
 Restaurant.findRestaurantByZipcode=findRestaurantByZipcode;
+Restaurant.findRestaurantById=findRestaurantById;
 module.exports = Restaurant;
 
     function createRestaurant(restaurant) {
@@ -28,4 +29,8 @@ module.exports = Restaurant;
 
     function findRestaurantByZipcode(zip) {
         return Restaurant.find({"zip": zip});
+    }
+
+    function findRestaurantById(id) {
+        return Restaurant.find({"_id": id});
     }

@@ -1,0 +1,71 @@
+<nav class="navbar fixed-top cl-grey-navbar">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand cl-text-black cl-icon-padding"
+               routerLink="../home">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            <h1 class="navbar-brand cl-text-black cl-text-bold cl-text-grey">
+                Current Order
+            </h1>
+        </div>
+        <a class="navbar-brand cl-text-black float-right cl-icon-padding"
+           routerLink="./new">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+</nav>
+
+
+<div class="container-margin-bottom">
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <div *ngFor="let order of orders; index as i">
+        <ngb-panel>
+            <ng-template ngbPanelTitle>
+                <h5> <b>{{order.time}}     |   Customer  :{{order.user}} </b>   </h5>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let dish of order.dishes; index as j">
+
+                <tr>
+                <th scope="row">{{j + 1}}</th>
+                <td>{{dish.dish}}</td>
+                <td>{{dish.quantity}}</td>
+                </tr>
+
+                </tbody>
+                </table>
+
+                <div class="float-right">
+                    <button class="btn btn-primary btn-small" [style.color]="buttoncolor"
+                            (click)="sendtoAlldelivery(order)"
+                            type="submit">Send to Delivery
+                    </button>
+                    <button class="btn btn-danger btn-small" [style.color]="buttoncolor"
+                            (click)="cancelOrder(order)"
+                            type="submit">Cancel Order
+                    </button>
+                </div>
+            </ng-template>
+        </ngb-panel>
+    </div>
+</ngb-accordion>
+</div>
+<nav class="navbar fixed-bottom cl-grey-navbar">
+    <div class="container-fluid">
+        <a routerLink="/restaurant/home" class="navbar-brand cl-icon-padding cl-text-blue float-left">
+            <i class="fas fa-home cl-text-blue"></i>
+        </a>
+        <a routerLink="../home" class="navbar-brand cl-icon-padding cl-text-blue float-right">
+            <i class="fas fa-user cl-text-blue"></i>
+        </a>
+    </div>
+</nav>

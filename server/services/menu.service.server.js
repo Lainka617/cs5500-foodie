@@ -3,7 +3,7 @@ module.exports = function (app) {
     var menuModel = require("../model/menu/menu.model.server.js");
     var path = require('path');
     const multer = require('multer'); // npm install multer --save
-    const baseUrl = "http://localhost:3200"
+    const baseUrl = "http://localhost:4200"
 
     app.post("/api/restaurant/menu/:restaurantId", createDish);
     app.get("/api/restaurant/getmenu/:restaurantId", findAllDishesForRestaurant);
@@ -12,7 +12,7 @@ module.exports = function (app) {
     app.delete("/api/restaurant/menu/:did", deleteDish);
 
     var storage = multer.diskStorage({
-        destination: __dirname + '/../../dist/web5610/assets/uploads/',
+        destination: __dirname + '/../../dist/CS5500/assets/uploads/',
         filename: function (req, file, cb) {
             cb(null,  file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
         }
@@ -97,7 +97,7 @@ module.exports = function (app) {
         menuModel.findAllDishes(restaurantId).then(
             function (dish) {
                 res.json(dish);
-                console.log(dish);
+                console.log('call api findAllDishesForRestaurant ' + restaurantId + ':' +dish);
             },
             function (err) {
                 res.status(400).send(err);

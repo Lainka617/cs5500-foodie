@@ -1,0 +1,195 @@
+<div id='cssmenu' class="fixed-top">
+    <ul>
+        <li class='active'><a href='#'><span>Home</span></a></li>
+        <li><a routerLink='/register'><span>Register</span></a></li>
+        <li class='last'><a routerLink='/login'><span>Login</span></a></li>
+    </ul>
+</div>
+
+<div *ngIf="loginErrorFlag2"
+     class="alert alert-danger text-center">
+    {{loginErrorMsg2}}
+</div>
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-start">
+            <div class="banner-content col-lg-8 col-md-12">
+                <h4 class="text-white text-uppercase">Wide Options of Choice</h4>
+                <h1>
+                    Delicious Receipes
+                </h1>
+                <p class="text-white">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br> or incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start top-dish Area -->
+<section class="top-dish-area section-gap" id="dish">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Our Popular Restaurants</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="single-dish col-lg-4">
+                <div class="thumb">
+                    <img class="img-fluid"
+                         src="https://raw.githubusercontent.com/webdev-5610/FoodDelivery/master/dist/web5610/assets/uploads/d1.jpg"
+                         alt="">
+                </div>
+                <h4 class="text-uppercase pt-20 pb-20">Bread Fruit Cheese Sandwich</h4>
+                <p>
+                    inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women
+                    face higher conduct.
+                </p>
+            </div>
+            <div class="single-dish col-lg-4">
+                <div class="thumb">
+                    <img class="img-fluid"
+                         src="https://raw.githubusercontent.com/webdev-5610/FoodDelivery/master/dist/web5610/assets/uploads/d2.jpg"
+                         alt="">
+                </div>
+                <h4 class="text-uppercase pt-20 pb-20">Beef Cutlet with Spring Onion</h4>
+                <p>
+                    inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women
+                    face higher conduct.
+                </p>
+            </div>
+            <div class="single-dish col-lg-4">
+                <div class="thumb">
+                    <img class="img-fluid"
+                         src="https://raw.githubusercontent.com/webdev-5610/FoodDelivery/master/dist/web5610/assets/uploads/d3.jpg"
+                         alt="">
+                </div>
+                <h4 class="text-uppercase pt-20 pb-20">Meat with sauce & Vegetables</h4>
+                <p>
+                    inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women
+                    face higher conduct.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container cl-container-padding-more">
+    <div class="title text-center">
+
+        <h1 class="mb-10"><br><br>All Restaurants<br><br></h1>
+
+    </div>   
+    <div appSortable (newIndexes)="onNewIndexes($event)">
+        <div *ngFor="let restaurant of restaurants">
+            <!-- <div class="float-right">
+                <a class="float-right cl-text-blue fa fa-bars"></a>
+                <a routerLink="/restaurant/menu/{{restaurant._id}}"
+                   class="fa fa-cog fa-fw"></a>
+            </div> -->
+            <div class="float-right">
+                <a routerLink="/menu/{{restaurant._id}}" class="primary-btn header-btn text-uppercase">Check Our Menu</a>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="https://raw.githubusercontent.com/webdev-5610/FoodDelivery/master/dist/web5610/assets/uploads/d3.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-6 mt-sm-20">
+                    <div style="clear: both">
+                        <h3 style="float: left">{{restaurant.name}}</h3>
+                        <h3 style="float: right">, {{restaurant.state}}</h3>
+                        <h3 style="float: right">, {{restaurant.city}}</h3>
+                        <h3 style="float: right">, {{restaurant.address2}}</h3>
+                        <h3 style="float: right"> {{restaurant.address1}}</h3>
+
+
+                    </div>
+                    <hr/>
+                    <p>{{restaurant.description}}</p>
+                </div>
+
+            </div>
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+</div>
+<footer id="myFooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h5>Get started</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a routerLink="/register">Sign up</a></li>
+                    <li><a href="#">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>About us</h5>
+                <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help desk</a></li>
+                    <li><a href="#">Forums</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Here we use the Google Embed API to show Google Maps. -->
+        <!-- In order for this to work in your project you will need to generate a unique API key.  -->
+        <iframe id="map-container" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJOwg_06VPwokRYv534QaPC8g&key=AIzaSyBdJm9Amm4KALkKlZObWn40dcpRyH119zg" >
+        </iframe>
+    </div>
+    <div class="social-networks">
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="google"><i class="fab fa-google-plus"></i></a>
+    </div>
+    <div class="footer-copyright">
+        <p>© 2020 Copyright NEU CS5500 Foodie</p>
+    </div>
+</footer>
+<nav class="navbar fixed-bottom cl-grey-navbar">
+    <ul class="nav nav-tabs" id = "menu">
+        <li class = "nav-item">    <a routerLink="" class="navbar-brand cl-text-black cl-icon-padding">
+            <span class="fas fa-home"></span>
+        </a></li>
+        <li class = "nav-item">    <a (click)="orderhistory()" class="navbar-brand cl-text-black cl-icon-padding pull-left">
+            <span class="fas fa-history"></span>
+        </a></li>
+    </ul>
+<form class="form-inline my-2 my-lg-0">
+    <a (click)="profile()"class="navbar-brand cl-text-black cl-icon-padding float-right">
+        <span class="fas fa-user"></span>
+    </a>
+</form>
+
+</nav>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->

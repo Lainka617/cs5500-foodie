@@ -7,6 +7,6 @@ import {User} from './model/user.client.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'web5610';
+  title = 'CS5500';
   user: User;
 }
