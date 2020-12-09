@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://webdev-final-cs5610.herokuapp.com'
+  baseUrl: 'https://cs5500-FoodieOverflow.herokuapp.com'
 };
