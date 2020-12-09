@@ -1,3 +1,4 @@
+import {Order} from "./order.client.model";
 
 export class Menu {
     _id: String;
