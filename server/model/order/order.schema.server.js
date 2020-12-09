@@ -6,6 +6,7 @@ var orderSchema = new mongoose.Schema({
         price: Number,
         quantity: Number,
     }],
+    restaurantId: String,
     total:Number,
     user: String,
     userId: String,
