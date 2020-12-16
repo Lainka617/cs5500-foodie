@@ -48,9 +48,7 @@ export class EditUserComponent implements OnInit {
         () => {
         }
     );
-      window.location.reload();
-
-
+    this.ngOnInit();
   }
 
 }

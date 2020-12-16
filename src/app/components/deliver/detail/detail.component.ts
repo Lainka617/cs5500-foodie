@@ -124,11 +124,11 @@ export class DetailComponent implements OnInit {
         this.lat = pos.coords.latitude;
         this.dir = {
           origin: { lat: this.lat, lng: this.lng },
-          destination: this.order.userAddress1 + ',' + this.order.userAddress2 + ',' + this.order.userCity + ',' 
-          + this.order.userState + ',' + this.order.userZip // { lat: 24.799524, lng: 120.975017 }
+          destination: this.order.address1 + ',' + this.order.address2 + ',' + this.order.city + ',' 
+          + this.order.state + ',' + this.order.zip // { lat: 24.799524, lng: 120.975017 }
         };
-        this.calculateDistance(this.lat, this.lng, this.order.userAddress1 +',' + this.order.userAddress2 + ',' + this.order.userCity + ',' 
-        + this.order.userState + ',' + this.order.userZip);
+        this.calculateDistance(this.lat, this.lng, this.order.address1 +',' + this.order.address2 + ',' + this.order.city + ',' 
+        + this.order.state + ',' + this.order.zip);
       });
   }
 

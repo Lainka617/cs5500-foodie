@@ -35,8 +35,10 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
 import { AddUserComponent } from './components/admin/add-user/add-user.component';
 import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
 import { OrderDetailsComponent } from './components/restaurant/order-details/order-details.component';
+import {DeliverHomeComponent} from './components/deliver/home/home.component';
+import { DetailComponent } from './components/deliver/detail/detail.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { DeliverService } from './services/deliver.service.client';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AddUserComponent,
     EditUserComponent,
     OrderDetailsComponent,
+    DeliverHomeComponent,
+    DetailComponent
   ],
   imports: [
       NgbModule,
@@ -75,7 +79,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBtrCeFbuL6cSgjC2UyJsaJuJoXKXAmQQM', libraries: ['geometry']})
   ],
-  providers: [UserService, RestaurantService, SharedService, AuthGuard, MenuService],
+  providers: [UserService, RestaurantService, SharedService, AuthGuard, DeliverService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
