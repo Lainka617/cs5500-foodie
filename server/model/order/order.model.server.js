@@ -17,7 +17,7 @@ orderModel.findOrdersByRestaurantId = findOrdersByRestaurantId;
 module.exports = orderModel;
 
 function createOrder(userId, order) {
-    console.log('Mongoose: createOrder() called');
+    console.log('Mongoose: createOrder() called: '+order);
     // first, create the order with the name, description, date, etc.
     return orderModel.create(order);
 }

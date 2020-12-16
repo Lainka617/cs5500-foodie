@@ -36,7 +36,7 @@ export class RestaurantComponent implements OnInit {
             console.log(this.restaurantId);
           });
         if (!this.user) {
-            this.user = new User('guest', '', '', '', '', '', '', '');
+            this.user = new User('guest', '', '', '', '', '', '', '', '', '', '', '');
         }
         // this.user._id = 'guest';
         this.menuService.findAllDishesForRestaurant(this.restaurantId).subscribe(
@@ -56,7 +56,7 @@ export class RestaurantComponent implements OnInit {
             return;
         }
         if (this.currentOrder === null) {
-            this.currentOrder = new Order(this.user.username, this.user._id, 0, [], 0, '', '');
+            this.currentOrder = new Order(this.user.username, this.user._id, 0, [], 0, '', '', '', '', '', '');
             this.currentOrder.dishes.push({dish: dish.dish_name, price: dish.price, quantity: 1});
 
             console.log(this.currentOrder);

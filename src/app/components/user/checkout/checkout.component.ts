@@ -88,11 +88,11 @@ export class CheckoutComponent implements OnInit {
 
 
   updateOrder() {
-    this.order.userAddress1 = this.address1;
-    this.order.userAddress2 = this.address2;
-    this.order.userCity = this.city;
-    this.order.userState = this.state;
-    this.order.userZip = this.zip;
+    this.order.address1 = this.address1;
+    this.order.address2 = this.address2;
+    this.order.city = this.city;
+    this.order.state = this.state;
+    this.order.zip = this.zip;
     this.order.phone = this.phone;
     this.order.total = Number(0);
     for (let i = 0; i < this.order.dishes.length; i++) {
@@ -122,11 +122,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   submit() {
-    this.order.userAddress1 = this.address1;
-    this.order.userAddress2 = this.address2;
-    this.order.userCity = this.city;
-    this.order.userState = this.state;
-    this.order.userZip = this.zip;
+    this.order.address1 = this.address1;
+    this.order.address2 = this.address2;
+    this.order.city = this.city;
+    this.order.state = this.state;
+    this.order.zip = this.zip;
     this.order.phone = this.phone;
     this.order.total = this.total;
     console.log(this.address1);
