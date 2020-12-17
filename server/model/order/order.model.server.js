@@ -64,7 +64,7 @@ function findOrdersByUserAndStatus(userId, status) {
 }
 
 function findOrdersByDeliverAndStatus(deliverId, status) {
-    console.log('Mongoose: findOrdersByDeliverAndStatus called');
+    console.log('Mongoose: findOrdersByDeliverAndStatus called: '+ deliverId +" - "+ status);
     return orderModel.find({deliverId: deliverId, status: status});
 }
 

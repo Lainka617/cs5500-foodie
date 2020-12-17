@@ -118,8 +118,9 @@ export class DetailComponent implements OnInit {
   getDirection() {
     console.log(this.lat);
     console.log(this.lng);
-    navigator.geolocation.getCurrentPosition( pos => {
-      console.log(pos);
+    console.log(navigator.geolocation);
+    navigator.geolocation.getCurrentPosition(pos => {
+        console.log(pos);
         this.lng = pos.coords.longitude;
         this.lat = pos.coords.latitude;
         this.dir = {
