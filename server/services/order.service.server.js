@@ -16,8 +16,10 @@ module.exports = function(app) {
     app.get('/api/deliver/:deliverId/intransitorder', findIntransitOrderByDeliver);
     app.get('/api/user/:userId/intransitorder', findIntransitOrderByUser);
     app.get('/api/allpendingorders', findAllPendingOrders);
-    app.get('/api/allcurrentorders', findAllCurrentOrders);
+    app.get('/api/order/restaurant/:restaurantId', findOrdersByRestaurantId);
+    app.get('/api/allcurrentorders/', findAllCurrentOrders);
     app.get('/api/order/status/:status', findOrdersByStatus);
+    app.get('/api/order/status/:status/restaurant/:restaurantId', findOrderByStatusAndRestaurant);
 
     app.put('/api/user/:userId/order/:orderId', updateOrder);// also check status if finished or not.
     app.delete('/api/user/:userId/order/:orderId', deleteOrder);
@@ -187,10 +189,12 @@ module.exports = function(app) {
             });
     }
 
-    function findOrderById(req, res){
+    function findOrderById(req, res) {
         var orderId = req.params['orderId'];
         orderModel.findOrderById(orderId)
             .then(function (order) {
+                console.log("orderId" + orderId);
+                console.log(order);
                 if(order == null){
                     res.status(404).send();
                 }
@@ -199,9 +203,26 @@ module.exports = function(app) {
                 }
             },
             function (err) {
-                console.log('create order error! ' + err);
+                console.log('find order error! ' + err);
                 res.status(400).send(err);
             });
+    }
+
+    function findOrdersByRestaurantId(req, res) {
+        var restaurantId = req.params['restaurantId'];
+        orderModel.findOrdersByRestaurantId(restaurantId)
+        .then(function (order) {
+            if(order == null){
+                res.status(404).send();
+            }
+            else {
+                res.status(200).json(order);
+            }
+        },
+        function (err) {
+            console.log('create order error! ' + err);
+            res.status(400).send(err);
+        });
     }
 
     function updateOrder(req, res) {
@@ -316,6 +337,27 @@ module.exports = function(app) {
     function findAllCurrentOrders(req,res) {
         orderModel.findOrdersByStatus(1)
             .then(function (orders) {
+                    if(orders == null){
+                        res.status(200).send([]);
+                    }
+                    else {
+                        res.status(200).json(orders);
+                    }
+                },
+                function (err) {
+                    console.log('create order error! ' + err);
+                    res.status(400).send(err);
+                });
+    }
+
+    function findOrderByStatusAndRestaurant(req,res) {
+        var restaurantId = req.params['restaurantId'];
+        var status = req.params['status'];
+        orderModel.findOrdersByStatusAndRestaurant(restaurantId, status)
+            .then(function (orders) {
+                console.log(restaurantId);
+                console.log(orders);
+
                     if(orders == null){
                         res.status(200).send([]);
                     }

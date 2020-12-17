@@ -36,18 +36,18 @@ const APP_ROUTES: Routes = [
   {path: 'restaurant/orderhistory/:restaurantid', component: RestaurantOrderHistoryComponent},
   {path: 'restaurant/currentorders/:restaurantid', component: CurrentOrderComponent, canActivate: [AuthGuard]},
   {path: 'restaurant/menu/:restaurantid', component: MenuComponent, canActivate: [AuthGuard]},
-  {path: 'restaurant/menu/:did/', component: MenuEditComponent},
+  {path: 'restaurant/editmenu/:did/:restaurantid', component: MenuEditComponent},
   {path: 'restaurant/order/:oid', component: OrderDetailsComponent},
     //user
   {path: 'user/:uid/home', component: UserProfileComponent},
   {path: 'user/:uid/profile', component: UserProfileComponent, canActivate: [AuthGuard]},
-  {path: 'user/:uid/checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
+  {path: 'user/:uid/:restaurantid/checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
   {path: 'user/:uid/orderhistory', component: OrderhistoryComponent, canActivate: [AuthGuard]},
   {path: 'user/:uid/order/:oid', component: OrderComponent, canActivate: [AuthGuard]},
   //delivery
   {path: 'deliver/:uid/home', component: DeliverHomeComponent},
   {path: 'deliver/:uid/detail/:oid', component: DetailComponent},
-    //order-history
+  //order-history
   {path: 'delivery/:did/home', component: UserProfileComponent},
   {path: 'delivery/:did/profile', component: UserProfileComponent},
   {path: 'delivery/:did/pendingorder', component: OrderhistoryComponent},

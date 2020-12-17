@@ -49,6 +49,8 @@ export class RestaurantProfileComponent implements OnInit {
           console.log(restaurant);
           this.restaurant = restaurant;
           this.updateFlag = true;
+          alert("Update Successfully!");
+          this.ngOnInit();
         },
         (error: any) => {
           console.log(error);

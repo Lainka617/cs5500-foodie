@@ -8,7 +8,9 @@ import {OrderService} from '../../../services/order.service.client';
 import {Order} from '../../../model/order.client.model';
 import {Dish} from '../../../model/order.client.model';
 import {User} from '../../../model/user.client.model';
+import {Restaurant} from '../../../model/restaurant.client.model';
 import {UserService} from '../../../services/user.service.client';
+import {RestaurantService} from '../../../services/restaurant.service.client';
 
 @Component({
   selector: 'app-checkout',
@@ -21,6 +23,8 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('f') imageForm: NgForm;
   userId: String;
   user: User;
+  restaurantId: String;
+  restaurant: Restaurant;
   order: Order;
   name: String;
   orderId: String;
@@ -41,6 +45,7 @@ export class CheckoutComponent implements OnInit {
               private sharedService: SharedService,
               private orderService: OrderService,
               private userService: UserService,
+              private restaurantService: RestaurantService,
               private route: Router) {
   }
 
@@ -49,13 +54,14 @@ export class CheckoutComponent implements OnInit {
     this.address2 = '';
     this.city = '';
     this.state = '';
-    this.zip = '';
     this.phone = '';
+    this.zip = '';
     this.activatedRoute.params.subscribe(params => {
       this.userId = params['uid'];
+      this.restaurantId = params['restaurantid'];
       this.userService.findUserById(this.userId).subscribe(
           (user: User) => {
-            this.user = user;
+            this.user = user[0];
             this.address1 = user.address1;
             this.address2 = user.address2;
             this.city = user.city;
@@ -63,6 +69,11 @@ export class CheckoutComponent implements OnInit {
             this.zip = user.zip;
             this.phone = user.phone;
           }
+      );
+      this.restaurantService.findRestaurantById(this.restaurantId).subscribe(
+        (restaurant: Restaurant[]) => {
+          this.restaurant = restaurant[0];
+        }
       );
     });
     console.log(this.user);
@@ -129,8 +140,9 @@ export class CheckoutComponent implements OnInit {
     this.order.zip = this.zip;
     this.order.phone = this.phone;
     this.order.total = this.total;
-    console.log(this.address1);
-    if (this.address1 === '' || this.city === '' || this.state === '' || this.zip === '' || this.phone === '') {
+    this.order.restaurantId = this.restaurantId;
+    this.order.status = 1;
+    if (this.address1 === '' || this.phone === '') {
       this.errorFlag = true;
       return;
     }
@@ -145,7 +157,7 @@ export class CheckoutComponent implements OnInit {
           console.log('sumbit order!');
         },
     );
-    this.route.navigate(['../orderhistory'], {relativeTo: this.activatedRoute});
+    this.route.navigate(['/user', this.userId, 'orderhistory'], {relativeTo: this.activatedRoute});
   }
 
   deleteOrder() {

@@ -14,8 +14,8 @@ export class MenuService {
     baseUrl = environment.baseUrl;
     options = {withCredentials: false};
 
-    createDish(dish) {
-        return this._http.post(this.baseUrl + '/api/restaurant/menu/', dish);
+    createDish(dish, restaurantId: String) {
+        return this._http.post(this.baseUrl + '/api/restaurant/menu/' + restaurantId, dish);
     }
 
     findAllDishesForRestaurant(restaurantId: String) {

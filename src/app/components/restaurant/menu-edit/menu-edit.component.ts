@@ -15,6 +15,7 @@ export class MenuEditComponent implements OnInit {
 
   @ViewChild('f') imageForm: NgForm;
   dishId: String;
+  restaurantId: String
   name: String;
   description: String;
   url: String;
@@ -34,6 +35,7 @@ export class MenuEditComponent implements OnInit {
     this.errorFlag = false;
     this.activatedRoute.params.subscribe(params => {
       this.dishId = params['did'];
+      this.restaurantId = params["restaurantid"];
       console.log(this.dishId);
     });
     if(this.dishId !== 'new'){
@@ -52,10 +54,10 @@ export class MenuEditComponent implements OnInit {
     }
 
     if (this.dishId === 'new') {
-      this.menuService.createDish(this.dish).subscribe(
+      this.menuService.createDish(this.dish, this.restaurantId).subscribe(
           (dish: Menu) => {
             console.log('create dish !');
-            this.route.navigate(['../'], {relativeTo: this.activatedRoute});
+            this.route.navigate(["/restaurant/menu/" + this.restaurantId], {relativeTo: this.activatedRoute});
           },
           (error: any) => console.log(error)
       );
@@ -63,7 +65,7 @@ export class MenuEditComponent implements OnInit {
       this.menuService.updateDish(this.dish._id, this.dish).subscribe(
           (dish: Menu) => {
             console.log('update dish !');
-            this.route.navigate(['../'], {relativeTo: this.activatedRoute});
+            this.route.navigate(["/restaurant/menu/" + this.restaurantId], {relativeTo: this.activatedRoute});
           },
           (error: any) => console.log(error)
       );

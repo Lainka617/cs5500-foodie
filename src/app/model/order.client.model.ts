@@ -13,6 +13,7 @@ export class Order {
   _id: String;
   user: String;
   userId: String;
+  restaurantId: String;
   deliverId: String;
   time: Date;
   status: Number; // 0 for not check out, 1 for not finished by the restaurant, 2 for finished.
@@ -25,10 +26,10 @@ export class Order {
   zip: String;
   phone: String;
 
-  constructor(user: String, userId: String, status: Number, dishes: Dish[], total: Number, address1: String, address2: String, city: String, state: String, zip: String, phone: String) {
+  constructor(user: String, userId: String, restaurantId: String, status: Number, dishes: Dish[], total: Number, address1: String, address2: String, city: String, state: String, zip: String, phone: String) {
     this.user = user;
     this.userId = userId;
-    // this.time = time;
+    this.restaurantId = restaurantId;
     this.status = status;
     this.dishes = dishes;
     this.total = total;
@@ -41,3 +42,4 @@ export class Order {
     this.phone = phone;
   }
 }
+

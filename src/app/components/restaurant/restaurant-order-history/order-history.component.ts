@@ -18,6 +18,7 @@ export class RestaurantOrderHistoryComponent implements OnInit {
   waitingdeliverorders: Order[];
   preparingorders: Order[];
   employeeId: String;
+  restaurantId: String;
 
   constructor(private  orderService: OrderService,
               private sharedService: SharedService,
@@ -25,28 +26,31 @@ export class RestaurantOrderHistoryComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.employeeId = this.sharedService.user._id;
-    this.orderService.findOrderByStatus(4).subscribe(
+    this.route.params.subscribe(params => {
+      this.restaurantId = params['restaurantid'];
+      console.log("page RestaurantOrderHistory" + this.restaurantId);
+    });
+    this.orderService.findOrderByStatusAndRestaurant(4, this.restaurantId).subscribe(
         (orders: any) => {
           this.completeorders = orders;
         }
     );
-    this.orderService.findOrderByStatus(5).subscribe(
+    this.orderService.findOrderByStatusAndRestaurant(5, this.restaurantId).subscribe(
         (orders: any) => {
           this.canceledorders = orders;
         }
     );
-    this.orderService.findOrderByStatus(1).subscribe(
+    this.orderService.findOrderByStatusAndRestaurant(1, this.restaurantId).subscribe(
         (orders: any) => {
           this.preparingorders = orders;
         }
     );
-    this.orderService.findOrderByStatus(2).subscribe(
+    this.orderService.findOrderByStatusAndRestaurant(2, this.restaurantId).subscribe(
         (orders: any) => {
           this.waitingdeliverorders = orders;
         }
     );
-    this.orderService.findOrderByStatus(3).subscribe(
+    this.orderService.findOrderByStatusAndRestaurant(3, this.restaurantId).subscribe(
         (orders: any) => {
           this.intransitorders = orders;
         }

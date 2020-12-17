@@ -24,6 +24,10 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     // this.userId = this.sharedService.user._id;
+    this.route.params.subscribe(params => {
+      this.restaurantId = params['restaurantid'];
+      console.log("page MenuComponent" + this.restaurantId);
+    });
     this.menuService.findAllDishesForRestaurant(this.restaurantId).subscribe(
         (dishes: any) => {
           this.dishes = dishes;
@@ -40,8 +44,7 @@ export class MenuComponent implements OnInit {
   }
 
   refresh() {
-    this.router.navigate(['restaurant/menu']);
-
+    this.ngOnInit();
   }
 
 }

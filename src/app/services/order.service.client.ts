@@ -68,6 +68,11 @@ export class OrderService {
         return this.http.get<Order[]>(this.baseUrl + '/api/order/status/' + status);
     }
 
+    findOrderByStatusAndRestaurant(status, restaurantId) {
+        console.log('front end service findOrderByStatusAndRestaurant called');
+        return this.http.get<Order[]>(this.baseUrl + '/api/order/status/' + status + "/restaurant/" + restaurantId);
+    }
+
     findAllPendingOrders() {
         console.log('front end service findAllPendingOrders called');
         return this.http.get<Order[]>(this.baseUrl + '/api/allpendingorders');

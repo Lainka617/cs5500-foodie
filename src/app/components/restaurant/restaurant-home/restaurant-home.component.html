@@ -11,17 +11,17 @@
 
 <div class="container">
   <button class="btn btn-primary btn-block"
-          routerLink="/restaurant/currentorders">Current Orders
+          routerLink="/restaurant/currentorders/{{restaurantId}}">Current Orders
   </button>
   <br/>
   <button class="btn btn-primary btn-block"
           routerLink="/restaurant/profile/{{restaurantId}}">Profile
   </button>
   <button class="btn btn-primary btn-block"
-          routerLink="/restaurant/menu">Menu
+          routerLink="/restaurant/menu/{{restaurantId}}">Menu
   </button>
   <button class="btn btn-primary btn-block"
-          routerLink="/restaurant/orderhistory">Order History
+          routerLink="/restaurant/orderhistory/{{restaurantId}}">Order History
   </button>
   <button class="btn btn-danger  btn-block"
           (click)="logout()" routerLinkActive="active">Logout

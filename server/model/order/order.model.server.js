@@ -13,6 +13,7 @@ orderModel.updateOrderStatus = updateOrderStatus;
 orderModel.findOrdersByUserAndStatus = findOrdersByUserAndStatus;
 orderModel.findOrdersByDeliverAndStatus = findOrdersByDeliverAndStatus;
 orderModel.findOrdersByRestaurantId = findOrdersByRestaurantId;
+orderModel.findOrdersByStatusAndRestaurant = findOrdersByStatusAndRestaurant;
 
 module.exports = orderModel;
 
@@ -75,4 +76,10 @@ function findOrdersByStatus(status) {
 function findOrdersByRestaurantId(restaurantId) {
     console.log('Mongoose: findOrdersByRestaurantId called');
     return orderModel.find({restaurantId: restaurantId});
+}
+
+
+function findOrdersByStatusAndRestaurant(restaurantId, status) {
+    console.log('Mongoose: findOrdersByStatusAndRestaurant called');
+    return orderModel.find({"restaurantId": restaurantId, "status": status});
 }
