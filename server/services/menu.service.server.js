@@ -74,8 +74,9 @@ module.exports = function (app) {
     }
 
     function createDish(req, res) {
-        // var pageId = req.params.pageId;
+        var restaurantId = req.params['restaurantId'];
         var dish = _.pick(req.body, ["dish_name",  "description", "url", "price",  "restaurantId"]);
+        dish.restaurantId = restaurantId;
         console.log(dish);
         console.log(req.body);
         menuModel.createDish(dish).then(

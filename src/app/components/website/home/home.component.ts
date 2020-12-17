@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     console.log('home!!!');
     this.user = this.sharedService.user;
     if (!this.user) {
-      this.user = new User('guest', '', '', '', '', '', '', '');
+      this.user = new User('guest', '', '', '', '', '', '', '', '', '', '', '');
     }
     this.restaurantService.findAllRestaurant().subscribe(
       (restaurants: any) => {

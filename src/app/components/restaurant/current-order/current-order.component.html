@@ -2,17 +2,13 @@
     <div class="container-fluid">
         <div>
             <a class="navbar-brand cl-text-black cl-icon-padding"
-               routerLink="../home">
+               routerLink="/restaurant/home/{{restaurantId}}">
                 <i class="fas fa-angle-left"></i>
             </a>
             <h1 class="navbar-brand cl-text-black cl-text-bold cl-text-grey">
                 Current Order
             </h1>
         </div>
-        <a class="navbar-brand cl-text-black float-right cl-icon-padding"
-           routerLink="./new">
-            <i class="fas fa-plus"></i>
-        </a>
     </div>
 </nav>
 
@@ -61,11 +57,8 @@
 </div>
 <nav class="navbar fixed-bottom cl-grey-navbar">
     <div class="container-fluid">
-        <a routerLink="/restaurant/home" class="navbar-brand cl-icon-padding cl-text-blue float-left">
+        <a routerLink="/restaurant/home/{{restaurantId}}" class="navbar-brand cl-icon-padding cl-text-blue float-left">
             <i class="fas fa-home cl-text-blue"></i>
-        </a>
-        <a routerLink="../home" class="navbar-brand cl-icon-padding cl-text-blue float-right">
-            <i class="fas fa-user cl-text-blue"></i>
         </a>
     </div>
 </nav>

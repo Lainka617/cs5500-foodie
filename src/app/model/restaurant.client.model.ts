@@ -5,13 +5,15 @@ export class Menu {
     price: Number;
     description: String;
     url: String;
+    restaurantId: String
 
-    constructor(id: String, name: String, price: Number, description: String, url: String) {
+    constructor(id: String, name: String, price: Number, description: String, url: String, restaurantId: String) {
         this._id = id;
         this.description = description;
         this.dish_name = name;
         this.price = price;
         this.url = url;
+        this.restaurantId = restaurantId;
     }
 
 }

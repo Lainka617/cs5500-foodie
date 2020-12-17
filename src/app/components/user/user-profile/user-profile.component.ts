@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private sharedService: SharedService) {
-    this.user = new User('11', '1', '11', '11', '11', '11', '11', '11', '11','11', '11', '11');
+    this.user = new User('11', '1', '11', '11', '11', '11', '11', '11', '', '', '', '');
   }
 
   userId: String;
@@ -39,12 +39,14 @@ export class UserProfileComponent implements OnInit {
             } else {
               this.user.username = this.username;
               this.updateProfile();
+              alert("You have updated successful!" );
             }
           },
           (error: any) => console.log(error)
       );
     } else {
       this.updateProfile();
+      alert("You have updated successful!" );
     }
   }
 

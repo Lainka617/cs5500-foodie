@@ -22,6 +22,7 @@ import { RestaurantOrderHistoryComponent } from './components/restaurant/restaur
 import {MatRadioModule} from '@angular/material/radio';
 import {UserService} from './services/user.service.client';
 import {RestaurantService} from './services/restaurant.service.client';
+import {OrderService} from './services/order.service.client';
 import {SharedService} from './services/shared.service';
 import { CurrentOrderComponent } from './components/restaurant/current-order/current-order.component';
 import {AuthGuard} from './services/auth-guard.service';
@@ -75,7 +76,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBtrCeFbuL6cSgjC2UyJsaJuJoXKXAmQQM', libraries: ['geometry']})
   ],
-  providers: [UserService, RestaurantService, SharedService, AuthGuard, MenuService],
+  providers: [UserService, RestaurantService, OrderService, SharedService, AuthGuard, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

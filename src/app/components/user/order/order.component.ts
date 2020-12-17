@@ -4,6 +4,8 @@ import {Order} from '../../../model/order.client.model';
 import {ActivatedRoute} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {OrderService} from '../../../services/order.service.client';
+import {RestaurantService} from '../../../services/restaurant.service.client';
+import { Restaurant } from 'src/app/model/restaurant.client.model';
 
 @Component({
   selector: 'app-order',
@@ -13,25 +15,30 @@ import {OrderService} from '../../../services/order.service.client';
 export class OrderComponent implements OnInit {
   userId: string;
   orderId: string;
+  restaurantId: string;
+  restaurant: Restaurant;
   user: User;
   order: Order;
   status: any = 'unknown';
 
   constructor(private _activatedRoute: ActivatedRoute, private _sharedService: SharedService,
-              private orderService: OrderService) { }
+              private orderService: OrderService, private restaurantSerivce: RestaurantService) { }
 
   ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.userId = params['uid'];
       this.orderId = params['oid'];
       console.log('user id: ' + this.userId);
+      console.log('order id: ' + this.orderId);
     });
 
     this.user = this._sharedService.user;
     this.orderService.findOrderById(this.orderId).subscribe(
         (order: any) => {
           this.order = order;
-            console.log(this.order);
+          console.log(this.order);
+          this.restaurantId = order.restaurantId;
+          console.log('restaurant id: ' + this.restaurantId);
           if (this.order.status === 3) {
             this.status = 'In transit';
           } else if (this.order.status === 2) {
@@ -45,9 +52,22 @@ export class OrderComponent implements OnInit {
           } else if (this.order.status === 5) {
             this.status = 'Cancelled';
           }
+          this.restaurantSerivce.findRestaurantById(this.restaurantId).subscribe(
+            (restaurants: Restaurant[]) => {
+              this.restaurant = restaurants[0];
+              console.log(this.restaurant);
+            }
+          );
+      
         }
     );
-    console.log(this.order);
+    // this.restaurantSerivce.findRestaurantById(this.restaurantId).subscribe(
+    //   (restaurants: Restaurant[]) => {
+    //     this.restaurant = restaurants[0];
+    //     console.log(this.restaurant);
+    //   }
+    // );
+
   }
 
     cancelOrder(order: Order) {

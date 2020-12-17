@@ -13,6 +13,7 @@ import {OrderService} from '../../../services/order.service.client';
 export class CurrentOrderComponent implements OnInit {
 
   employeeId: String;
+  restaurantId: String;
   orders: Order[];
 
   constructor(private restaurantService: RestaurantService,
@@ -23,7 +24,11 @@ export class CurrentOrderComponent implements OnInit {
 
   ngOnInit() {
     this.employeeId = this.sharedService.user._id;
-    this.orderService.findAllCurrentOrders().subscribe(
+    this.route.params.subscribe(params => {
+      this.restaurantId = params['restaurantid'];
+      console.log("page RestaurantProfile" + this.restaurantId);
+    });
+    this.orderService.findOrderByStatusAndRestaurant(1, this.restaurantId).subscribe(
         (orders: any) => {
           this.orders = orders;
           console.log(this.orders);
@@ -37,7 +42,7 @@ export class CurrentOrderComponent implements OnInit {
           console.log('send order to delivery!');
         }
     );
-    window.location.reload();
+    this.ngOnInit();
 
   }
 
@@ -47,7 +52,7 @@ export class CurrentOrderComponent implements OnInit {
           console.log('cancel order');
         }
     );
-      window.location.reload();
+    this.ngOnInit();
 
   }
 
