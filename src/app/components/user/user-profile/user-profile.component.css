@@ -1,6 +1,10 @@
 .container-margin-bottom {
     margin-bottom: 80px;
 }
+.bottom-bar{
+    display: block;
+    height: 80px;
+}
 
 #menu {
     font:12px verdana, arial, sans-serif;
@@ -13,9 +17,7 @@
 #menu li {
     float:left;
 }
-#menu li a {
 
-}
 #menu li a span{
 
     display: inline-block;
@@ -38,11 +40,5 @@
     font-weight: 800;
     left: 300px;
     cursor: pointer;
-}
-#menu li a:hover {
-
-}
-#menu li a.last {
-
 }
 

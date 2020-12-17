@@ -137,7 +137,6 @@ export class CheckoutComponent implements OnInit {
     this.order.address2 = this.address2;
     this.order.city = this.city;
     this.order.state = this.state;
-    this.order.address1 = this.address1;
     this.order.zip = this.zip;
     this.order.phone = this.phone;
     this.order.total = this.total;
