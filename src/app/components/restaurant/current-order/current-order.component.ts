@@ -4,6 +4,7 @@ import {RestaurantService} from '../../../services/restaurant.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {OrderService} from '../../../services/order.service.client';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-current-order',
@@ -20,7 +21,8 @@ export class CurrentOrderComponent implements OnInit {
               private orderService: OrderService,
               private route: ActivatedRoute,
               private router: Router,
-              private sharedService: SharedService) { }
+              private sharedService: SharedService,
+              private location: Location) { }
 
   ngOnInit() {
     this.employeeId = this.sharedService.user._id;
@@ -28,12 +30,23 @@ export class CurrentOrderComponent implements OnInit {
       this.restaurantId = params['restaurantid'];
       console.log("page RestaurantProfile" + this.restaurantId);
     });
-    this.orderService.findOrderByStatusAndRestaurant(1, this.restaurantId).subscribe(
+    if (this.restaurantId == 'all') {
+      this.orderService.findAllCurrentOrders().subscribe(
+        (orders: any) => {
+          this.orders = orders;
+          console.log(this.orders);
+        }        
+      );
+
+    } else {
+      this.orderService.findOrderByStatusAndRestaurant(1, this.restaurantId).subscribe(
         (orders: any) => {
           this.orders = orders;
           console.log(this.orders);
         }
-    );
+      );
+    }
+
   }
 
   sendtoAlldelivery(order: Order) {
@@ -56,5 +69,8 @@ export class CurrentOrderComponent implements OnInit {
 
   }
 
+  back() {
+    this.location.back()
+  }
 
 }
