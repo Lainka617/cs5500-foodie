@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../model/user.client.model';
 import {Order} from '../../../model/order.client.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
 import {OrderService} from '../../../services/order.service.client';
 import {RestaurantService} from '../../../services/restaurant.service.client';
@@ -22,7 +22,7 @@ export class OrderComponent implements OnInit {
   status: any = 'unknown';
 
   constructor(private _activatedRoute: ActivatedRoute, private _sharedService: SharedService,
-              private orderService: OrderService, private restaurantSerivce: RestaurantService) { }
+              private orderService: OrderService, private restaurantSerivce: RestaurantService, private router: Router) { }
 
   ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
@@ -76,7 +76,7 @@ export class OrderComponent implements OnInit {
                 console.log('cancel order');
             }
         );
-        window.location.reload();
+        this.router.navigate(['/user', this.user._id, 'orderhistory']);
     }
 
 }
