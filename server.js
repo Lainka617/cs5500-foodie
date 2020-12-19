@@ -15,8 +15,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var mongoose = require("mongoose");
-const connectionString = "mongodb+srv://shiqi:1234qwer@cluster0.kgtgi.mongodb.net/cs5500?retryWrites=true&w=majority";
-//mongodb://localhost:27017/cs5500';
+const connectionString = process.env.CONNECTIONSTRING || 'mongodb://localhost:27017/cs5500'; //"mongodb+srv://shiqi:1234qwer@cluster0.kgtgi.mongodb.net/cs5500?retryWrites=true&w=majority";
 
 mongoose.createConnection(connectionString, {useNewUrlParser: true});
 
@@ -35,7 +34,7 @@ app.use(function(req, res, next) {
 //var cors = require('cors');    
 //app.use(cors({credentials: true, origin: 'https://cs5500-foodie.herokuapp.com'}));
 
-const port=process.env.PORT || '80';
+const port=process.env.PORT || '3200';
 app.set('port', port);
 
 // Create HTTP server
