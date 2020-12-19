@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // CORS
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://cs5500-foodieoverflow.herokuapp.com/");
+  res.header("Access-Control-Allow-Origin", "https://cs5500-foodie.herokuapp.com");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
 });
 
 var cors = require('cors');    
-app.use(cors({credentials: true, origin: 'https://cs5500-foodieoverflow.herokuapp.com/'}));
+app.use(cors({credentials: true, origin: 'https://cs5500-foodie.herokuapp.com'}));
 
 const port=process.env.PORT || '3200';
 app.set('port', port);
