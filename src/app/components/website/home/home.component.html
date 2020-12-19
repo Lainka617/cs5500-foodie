@@ -88,37 +88,35 @@
         <h1 class="mb-10"><br><br>All Restaurants<br><br></h1>
 
     </div>   
-    <div appSortable (newIndexes)="onNewIndexes($event)">
-        <div *ngFor="let restaurant of restaurants">
-            <!-- <div class="float-right">
-                <a class="float-right cl-text-blue fa fa-bars"></a>
-                <a routerLink="/restaurant/menu/{{restaurant._id}}"
-                   class="fa fa-cog fa-fw"></a>
-            </div> -->
-            <div class="float-right">
-                <a routerLink="/menu/{{restaurant._id}}" class="primary-btn header-btn text-uppercase">Check Our Menu</a>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="https://raw.githubusercontent.com/webdev-5610/FoodDelivery/master/dist/web5610/assets/uploads/d3.jpg" alt="" class="img-fluid">
-                </div>
-                <div class="col-md-6 mt-sm-20">
-                    <div style="clear: both">
-                        <h3 style="float: left">{{restaurant.name}}</h3>
-                        <h3 style="float: right">, {{restaurant.state}}</h3>
-                        <h3 style="float: right">, {{restaurant.city}}</h3>
-                        <h3 style="float: right">, {{restaurant.address2}}</h3>
-                        <h3 style="float: right"> {{restaurant.address1}}</h3>
-
-
-                    </div>
-                    <hr/>
-                    <p>{{restaurant.description}}</p>
-                </div>
-
-            </div>
-            <p></p>
+    <div *ngFor="let restaurant of restaurants">
+        <!-- <div class="float-right">
+            <a class="float-right cl-text-blue fa fa-bars"></a>
+            <a routerLink="/restaurant/menu/{{restaurant._id}}"
+                class="fa fa-cog fa-fw"></a>
+        </div> -->
+        <div class="float-right">
+            <a routerLink="/menu/{{restaurant._id}}" class="primary-btn header-btn text-uppercase">Check Our Menu</a>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://raw.githubusercontent.com/webdev-5610/FoodDelivery/master/dist/web5610/assets/uploads/d3.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 mt-sm-20">
+                <div style="clear: both">
+                    <h3 style="float: left">{{restaurant.name}}</h3>
+                    <h3 style="float: right">, {{restaurant.state}}</h3>
+                    <h3 style="float: right">, {{restaurant.city}}</h3>
+                    <h3 style="float: right">, {{restaurant.address2}}</h3>
+                    <h3 style="float: right"> {{restaurant.address1}}</h3>
+
+
+                </div>
+                <hr/>
+                <p>{{restaurant.description}}</p>
+            </div>
+
+        </div>
+        <p></p>
     </div>
 </div>
 
