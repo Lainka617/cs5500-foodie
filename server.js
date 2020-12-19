@@ -15,7 +15,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var mongoose = require("mongoose");
-const connectionString = process.env.CONNECTIONSTRING || 'mongodb://localhost:27017/cs5500'; //"mongodb+srv://shiqi:1234qwer@cluster0.kgtgi.mongodb.net/cs5500?retryWrites=true&w=majority";
+const connectionString = process.env.CONNECTIONSTRING || "mongodb+srv://shiqi:1234qwer@cluster0.kgtgi.mongodb.net/cs5500?retryWrites=true&w=majority";
 
 mongoose.createConnection(connectionString, {useNewUrlParser: true});
 
