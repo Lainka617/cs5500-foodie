@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
 var cors = require('cors');    
 app.use(cors({credentials: true, origin: 'https://cs5500-foodie.herokuapp.com'}));
 
-const port=process.env.PORT || '3200';
+const port=process.env.PORT || '80';
 app.set('port', port);
 
 // Create HTTP server
