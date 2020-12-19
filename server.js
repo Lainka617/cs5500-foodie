@@ -14,15 +14,16 @@ app.use(session({ secret: 'S3CR#T!' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-var connectionString = 'mongodb://localhost:27017/cs5500';
 var mongoose = require("mongoose");
+const connectionString = "mongodb+srv://shiqi:1234qwer@cluster0.kgtgi.mongodb.net/cs5500?retryWrites=true&w=majority";
+//mongodb://localhost:27017/cs5500';
 
 mongoose.createConnection(connectionString, {useNewUrlParser: true});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// CORS
+//CORS
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "https://cs5500-foodie.herokuapp.com");
 //   res.header("Access-Control-Allow-Credentials", "true");
