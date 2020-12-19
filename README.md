@@ -17,10 +17,3 @@
    5. Run backend
             node server.js
     
-## Structure
-
-### Frontend
-
-### Backend
-
-   External API
